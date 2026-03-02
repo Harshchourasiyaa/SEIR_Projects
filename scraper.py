@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 link = sys.argv[1]
+if not link.startswith("http"):
+    link = "https://" + link
 
 headers = {
     "User-Agent": "Mozilla/5.0"
