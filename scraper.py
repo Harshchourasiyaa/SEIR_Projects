@@ -13,10 +13,16 @@ pageresponse = requests.get(link,headers=headers)
 parsedhtml = BeautifulSoup(pageresponse.text, "html.parser")
 
 print("\n**--TITLE--**")
-print(parsedhtml.title.text.strip())
+if parsedhtml.title:
+    print(parsedhtml.title.text.strip())
+else:
+    print("Title not found.")
 
 print("\n**--BODY TEXT--**")
-print(parsedhtml.body.get_text(separator="\n",strip=True)[:1500])
+if parsedhtml.body:
+    print(parsedhtml.body.get_text(separator="\n",strip=True))
+else:
+    print("Body content not found.")
 
 print("\n**--LINKS--**")
 set_links = set()
